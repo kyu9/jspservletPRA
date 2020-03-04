@@ -1,0 +1,25 @@
+1. Servlet 매핑
+다이나믹 웹 프로젝트를 만드는 과정에서 xml를 만들고 
+
+xml에서 간단한 코딩
+-servlet tag, servlet name tag, servlet class tag이용
+-servlet을 만들때 url를 만들어두고 패키지이름도 기억해둬야함
+
+servlet에서도 아주 가볍게 사용할 수는 있지만 매핑과정을 통해서도 할 수 있다는 거
+
+2. Servlet request, response
+
+Request는 사용자가 서버에게 요청하는 개념
+ㄴ요청에 대한 정보를 가지고 있는 객체(메소드)
+Response는 서버가 사용자에게 대답하는 개념
+ㄴ응답에 대한 정보를 가지고 있는 객체(메소드)
+
+3.Servlet Life-Cycle
+생성주기 관련 메소드로는 
+@PostConstruct
+init()	=
+service	=여기 과정이 Servlet 생성 및 종료
+destroy()	=
+@PreDestroy
+
+4. Error 500에서 고생을 많이했는데 요놈은 xml에서 servlet매핑 과정에서의 코딩에서 문제가 있었음. servlet-class tag에서 쓸때 패키지명을 정확히 다 써야함
