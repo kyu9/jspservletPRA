@@ -1,0 +1,113 @@
+1. form데이터 처리
+form tag에서 제출로해서 웹서버로 데이터를 보내게 된다면 request와 묶여서 제출됨 여기서 사용하는게  
+doGet ,doPost 메소드로 받게됨
+get방식으로 받게되면 doGet()
+메소드의 default값은 get
+get은 사용자의 정보가 url에 노출됨!
+post방식으로 받게 되면 doPost()
+post은 매핑 정보만 노출!
+
+서블릿에서 입력값을 받을때
+값이 하나일때는 request.getParameter("")
+값이 하나가 아닐때는 request.getParameterValues("")로 받고 배열로 받아야함!
+
+2. JSP스크립트
+서블릿은 순수자바코드로만되어있음
+xxx.java->xxx.class
+컴터가 수행
+jsp
+xxx.jsp->xxx_jsp.java->xxx_jsp.class
+2,3번은 컴터가수행
+
+jsp주요 스크립트
+선언태그
+<%!  %>
+자바 메소드나 변수설정가능
+
+주석태그
+<!--   -->---html주석
+<%-- -->---jsp주석
+
+스크립트릿 태그
+<% %>
+php할떄 <??>랑 같은 논리로 html과 java언어를 같이 사용할때 넣고 사용
+표현식 태그
+<%= %>
+php할 때 <?= ?>랑 같은 논리
+
+실행시켜서 웹에서 코드를 볼때는 java코드는 애초에 웹서버까지 안넘어가기 떄문에 자바언어들은 웹에서 나타나지 않음
+
+jsp 주요 스크립트/지시어
+
+1.page 페이지 기본설정
+ㄴ<%page 속성="속성 값"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+여기서 페이지 언어가 java로 되어있는데 자바언어밖에 없음, 추가로 jsp를 만들때 거의 default로 만들어짐
+
+2.include
+ㄴ<%include file ="파일명"%>
+<%@ page import="java.util.ArrayList"%>
+ㄴ자바에서 Arraylist를 사용하니까 import시킨거
+<%@ include file ="header.jsp"%>
+header.jsp파일을 같이 사용할 때 
+
+3.taglib 외부라이브러리 태그 설정
+ㄴ<% taglib uri="url" prefix="네임스페이스명"%>
+
+
+-----------------------------------------------------------------------------------------
+
+JSP request, response
+
+request객체
+사용자->웹서버
+요청해서 들어온 데이터
+
+form tag을 제일 많이 사용함
+
+response객체
+웹서버->사용자
+응답해야하는 데이터
+<%response.sendRedirect("secondPage.jsp");%>
+이렇게 하게되면 바로 secondPag.jsp로 보내짐
+
+
+jsp는 서버를 재기동할 필요가 없다 웹에서 다시고침으로 가능
+
+-----------------------------------------------------------------------------------------
+
+JSP 내장객체
+
+config객체
+web.xml에서 init-param태그를 이용하고
+getInitParameter()를 이용해서
+JSP 에서도 사용하는 것
+xml
+ㄴ<init-param> tag사용
+jsp
+ㄴconfig.getInitParameter("")사용
+
+application객체
+web.xml에서 context-param태그를 이용하고
+getInitParameter()를 이용해서
+어떤 JSP에서도 사용하는 것
+xml
+ㄴ<context-param> tag사용
+jsp
+ㄴapplication.getInitParameter("")사용
+
+get,setAttribute
+jsp에서 application.setAttribute(name,value)
+또다른 jsp에서 application.getAttribute로 가져오는데 꼭 applicaion앞에 (String)을 붙히고 사용!
+
+(String)application.getAttribute이렇게 
+
+out객체
+out.print("")
+그냥 출력
+
+exception객체
+에러를 컨트롤 하기위해서
+페이지 지시어로 errorpage로 보내게 해두고 
+errorpage에서는 <%@ page isErrorPage="true"%>를 선언해둬야함 default값이 false이기 때문
